@@ -1,9 +1,6 @@
 pipeline {
-    agent any  // Use any available agent
+    agent any
 
-    tools {
-        maven 'maven'  // Ensure this matches the name configured in Jenkins
-    }
     stages {
         stage('Checkout') {
             steps {
@@ -13,35 +10,29 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean package'  // Run Maven build
+                sh 'mvn clean package -DskipTests'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'mvn test'  // Run unit tests
+                sh 'mvn test'
             }
         }
 
-        
-        
-       
         stage('Run Application') {
             steps {
-                // Start the JAR application
                 sh 'mvn exec:java -Dexec.mainClass="com.example.App"'
             }
         }
-
-        
     }
 
     post {
         success {
-            echo 'Build and deployment successful!'
+            echo 'Pipeline successful!'
         }
         failure {
-            echo 'Build failed!'
+            echo 'Pipeline failed!'
         }
     }
 }
