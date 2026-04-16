@@ -8,13 +8,13 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/praveeng4410/MyMavenSeleniumApp01.git'
+                git branch: 'main', url: 'https://github.com/praveeng4410/MyMavenSeleniumApp01.git
             }
         }
 
         stage('Build') {
             steps {
-                'mvn clean package'  // Run Maven build
+                sh 'mvn clean package'  // Run Maven build
             }
         }
 
