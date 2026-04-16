@@ -1,4 +1,3 @@
-
 pipeline {
     agent any  // Use any available agent
 
@@ -8,7 +7,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/praveeng4410/MyMavenSeleniumApp01.git
+                git branch: 'master', url: 'https://github.com/prithvicatalog/MyMavenSeleniumApp.git'
             }
         }
 
